@@ -1,27 +1,27 @@
 package banque.exception;
 
 /************************************************************
- * Cette exception est levée par la Classe AgenceBancaire lorsque un compte avec valeur null est ajouté à l'agence.<BR>
+ * Cette exception est levÃ©e par la Classe AgenceBancaire lorsque un compte avec valeur null est ajoutÃ© Ã  l'agence.<BR>
  * 
- * @author André Péninou.
+ * @author AndrÃ© PÃ©ninou.
  * @version 3.0
  *****************************/
 
 public class ABCompteNullException extends Exception {
 
 	/**
-	 * Constructeur par défaut.<BR>
+	 * Constructeur par dÃ©faut.<BR>
 	 */
 	public ABCompteNullException() {
 		this("Erreur sur un objet de la classe AgenceBancaire");
 	}
 
 	/**
-	 * Constructeur paramétré.<BR>
+	 * Constructeur paramÃ©trÃ©.<BR>
 	 * 
 	 * @param message
-	 *            information qui sera affichée si l'exception est affichée à
-	 *            l'écran
+	 *            information qui sera affichÃ©e si l'exception est affichÃ©e Ã 
+	 *            l'Ã©cran
 	 */
 	public ABCompteNullException(String message) {
 		super(message);

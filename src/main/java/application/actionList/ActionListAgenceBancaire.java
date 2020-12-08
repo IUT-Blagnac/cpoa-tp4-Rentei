@@ -1,24 +1,23 @@
 package application.actionList;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 import application.action.Action;
 import application.action.ActionList;
 import banque.AgenceBancaire;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Scanner;
 
-public class ActionListAgenceBancaire<E> implements ActionList<E>{
+public class ActionListAgenceBancaire implements ActionList<AgenceBancaire> {
+    private String message ;
+    private String code ;
+    private String title ;
+    private ArrayList<Action> alAction ;
 
-    private String message;
-    private String code;
-    private String title;
-    private ArrayList<Action<AgenceBancaire>> listeActions;
-
-    public ActionListAgenceBancaire(String message,String title, ArrayList<Action<AgenceBancaire>> listeActions) {
+    public ActionListAgenceBancaire(String message, String code, String title) {
         this.message = message;
-        this.code = "0";
+        this.code = code;
         this.title = title;
-        this.listeActions = listeActions;
+        this.alAction = new ArrayList<>();
     }
 
     @Override
@@ -32,37 +31,45 @@ public class ActionListAgenceBancaire<E> implements ActionList<E>{
     }
 
     @Override
-    public void execute(E e) throws Exception {
+    public void execute(AgenceBancaire ag) throws Exception {
+        boolean continuer = true;
+        // Boucle infinie
+        while (continuer) {
+            System.out.println("Menu (" + this.title +"\n");
 
-        while(code != "-1") {
-            System.out.println("--");
-            System.out.println("Agence "+((AgenceBancaire) e).getNomAgence()+" de "+((AgenceBancaire) e).getLocAgence());
-            System.out.println("Menu "+listTitle());
-            System.out.println("--");
-            System.out.println("\n  Choisir :");
-
-            for (int i = 0; i < listeActions.size(); i++) {
-
-                System.out.println("    "+(i+1)+" - "+listeActions.get(i).actionMessage());
-
+            for (Action act : alAction){
+                System.out.println(act.actionCode() + " - " + act.actionMessage());
             }
-            System.out.println("\n    0 - Pour quitter ce menu");
-            System.out.println("Choisir");
-            Scanner scan = new Scanner(System.in);
-            int rep = scan.nextInt();
+            System.out.println("q - Quitter");
 
-            if(rep != 0) {
-                listeActions.get(rep-1).execute((AgenceBancaire)e);
+            System.out.print("Choix -> ");
 
-            }else {
-                code = "-1";
+            // Saisie
+            Scanner scanner = new Scanner ( System.in );
+            scanner.useLocale(Locale.US);
+            String choix = scanner.next();
+            choix = choix.toLowerCase();
+
+            // On cherche parmis toute les action si le choix correspond a l'une.
+            boolean isFound = false ;
+            for (Action action : alAction){
+                if(action.actionCode().equals(choix)){
+                    action.execute(ag);
+                    isFound = true ;
+                    break;
+                }
+            }
+
+            if (choix.equals("q")){
+                System.out.println("Fermeture ...");
+                System.exit(0);
+            }
+
+            // Si on n'a toujours pas trouvé d'action, alors on l'indique
+            if (!isFound){
+                System.out.println("Aucun choix valide...");
             }
         }
-        this.code = "0";
-        System.out.println("Fin de "+this.message);
-
-
-
     }
 
     @Override
@@ -72,18 +79,17 @@ public class ActionListAgenceBancaire<E> implements ActionList<E>{
 
     @Override
     public int size() {
-        return listeActions.size();
+        return alAction.size() ;
     }
 
     @Override
     public boolean addAction(Action ac) {
-        for (Action action : listeActions) {
-            if(ac.actionMessage().equals(action.actionMessage())) {
-                return false;
-            }
+        // Si l'action existe deja on fait rien
+        if (alAction.contains(ac)){
+            return false;
+        }else { // Sinon on l'insere
+            alAction.add(ac);
+            return true;
         }
-        listeActions.add(ac);
-        return true;
     }
-
 }

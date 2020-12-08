@@ -1,21 +1,21 @@
 package banque;
 
-import java.util.ArrayList;
-
 import banque.exception.ABCompteDejaExistantException;
 import banque.exception.ABCompteInexistantException;
 import banque.exception.ABCompteNullException;
+
+import java.util.ArrayList;
 
 
 // V ARRAYLLIST OK
 
 /************************************************************
- * La classe AgenceBancaire permet de gérer une agence bancaire comme un ensemble de Comptes.<BR>
- * Une AgenceBancaire a un nom, une localisation (ville) et gère un ensemble de Comptes.<BR>
- * Exemple : agence "Agence Caisse Epargne" à "Pibrac".<BR>
- * Chaque Compte de l'AgenceBancaire a un numéro unique (vérification faite lors de l'ajout d'un Compte).<BR>
+ * La classe AgenceBancaire permet de gÃ©rer une agence bancaire comme un ensemble de Comptes.<BR>
+ * Une AgenceBancaire a un nom, une localisation (ville) et gÃ¨re un ensemble de Comptes.<BR>
+ * Exemple : agence "Agence Caisse Epargne" Ã  "Pibrac".<BR>
+ * Chaque Compte de l'AgenceBancaire a un numÃ©ro unique (vÃ©rification faite lors de l'ajout d'un Compte).<BR>
  * 
- * @author André Péninou.
+ * @author AndrÃ© PÃ©ninou.
  * @version 7.02
  *****************************/
 
@@ -25,9 +25,9 @@ public class AgenceBancaire {
 	private ArrayList<Compte> alCptes;
 
 	/**
-	 * Constructeur paramétré.<BR>
-	 * Permet de créer une AgenceBancaire en donnant son nom et sa ville.<BR>
-	 * L'AgenceBancaire est initialisée avec 0 comptes.<BR>
+	 * Constructeur paramÃ©trÃ©.<BR>
+	 * Permet de crÃ©er une AgenceBancaire en donnant son nom et sa ville.<BR>
+	 * L'AgenceBancaire est initialisÃ©e avec 0 comptes.<BR>
 	 * 
 	 * @param pNomAgence
 	 *            Le nom de l'AgenceBancaire.
@@ -42,7 +42,7 @@ public class AgenceBancaire {
 	}
 
 	/**
-	 * Permet de connaître le nom de l'AgenceBancaire.<BR>
+	 * Permet de connaÃ®tre le nom de l'AgenceBancaire.<BR>
 	 * <BR>
 	 * 
 	 * @return Le nom de l'AgenceBancaire.
@@ -53,7 +53,7 @@ public class AgenceBancaire {
 	}
 
 	/**
-	 * Permet de connaître la localisation de l'AgenceBancaire.<BR>
+	 * Permet de connaÃ®tre la localisation de l'AgenceBancaire.<BR>
 	 * <BR>
 	 * 
 	 * @return La ville de localisation de l'AgenceBancaire.
@@ -64,7 +64,7 @@ public class AgenceBancaire {
 	}
 
 	/**
-	 * Permet de connaître le nombre de Comptes existant dans l'AgenceBancaire.<BR>
+	 * Permet de connaÃ®tre le nombre de Comptes existant dans l'AgenceBancaire.<BR>
 	 * <BR>
 	 * 
 	 * @return Le nombre de comptes de l'AgenceBancaire.
@@ -75,49 +75,49 @@ public class AgenceBancaire {
 	}
 
 	/**
-	 * Permet de retrouver un Compte de l'AgenceBancaire à partir de son numéro de
+	 * Permet de retrouver un Compte de l'AgenceBancaire Ã  partir de son numÃ©ro de
 	 * compte (unique).<BR>
-	 * Renvoie null si le Compte de numéro de compte pNumCompte n'est pas
-	 * trouvé.<BR>
+	 * Renvoie null si le Compte de numÃ©ro de compte pNumCompte n'est pas
+	 * trouvÃ©.<BR>
 	 * <BR>
 	 * 
 	 * @param pNumCompte
-	 *            Le numéro du Compte recherché.
+	 *            Le numÃ©ro du Compte recherchÃ©.
 	 * @see AgenceBancaire#addCompte(Compte)
-	 * @return Le Compte de numéro pNumCompte, null si le compte n'est pas
-	 *         trouvé.
+	 * @return Le Compte de numÃ©ro pNumCompte, null si le compte n'est pas
+	 *         trouvÃ©.
 	 */
 
 	public Compte getCompte(String pNumCompte) {
-		// A titre d'exemple : utilise une méthode privée définie en fin de
+		// A titre d'exemple : utilise une mÃ©thode privÃ©e dÃ©finie en fin de
 		// classe
 		return this.trouveCompte(pNumCompte);
 	}
 
 	/**
-	 * Permet de retrouver les Comptes de l'AgenceBancaire correspondant à un nom de
-	 * propriétaire donné.<BR>
-	 * Renvoie un tableau du nombre de Comptes ayant pour propriétaire
+	 * Permet de retrouver les Comptes de l'AgenceBancaire correspondant Ã  un nom de
+	 * propriÃ©taire donnÃ©.<BR>
+	 * Renvoie un tableau du nombre de Comptes ayant pour propriÃ©taire
 	 * pNomProprietaire (et contenant les dits Comptes...).<BR>
-	 * Si aucun Compte n'est trouvé, renvoie un tableau de longueur 0.<BR>
+	 * Si aucun Compte n'est trouvÃ©, renvoie un tableau de longueur 0.<BR>
 	 * <BR>
 	 * 
 	 * @param pNomProprietaire
-	 *            Le nom du propriétaire de Compte dont on veut les Comptes.
+	 *            Le nom du propriÃ©taire de Compte dont on veut les Comptes.
 	 * @see AgenceBancaire#addCompte(Compte)
-	 * @return Un tableau des Comptes ayant pour propriétaire pNomProprietaire,
-	 *         un tableau de longueur 0 si aucun compte n'est trouvé.
+	 * @return Un tableau des Comptes ayant pour propriÃ©taire pNomProprietaire,
+	 *         un tableau de longueur 0 si aucun compte n'est trouvÃ©.
 	 */
 
 	public Compte[] getComptesDe(String pNomProprietaire) {
 		/*
-		 * Méthode : créer une ArrayList de Compte temporaire : alTemp. 
+		 * MÃ©thode : crÃ©er une ArrayList de Compte temporaire : alTemp. 
 		 * Parcourir this.alCptes.
 		 * 	Si un compe appartient au proprietaire 
 		 * 		=> le garder dans alTemp.
 		 * Si alTemp non vide : recopier tous les comptes de alTemp dans
-		 * un nouveau tableau qui sera renvoyé 
-		 * Sinon créer un tableau de 0 éléments.
+		 * un nouveau tableau qui sera renvoyÃ© 
+		 * Sinon crÃ©er un tableau de 0 Ã©lÃ©ments.
 		 */
 
 		Compte t[], cTemp;
@@ -136,9 +136,9 @@ public class AgenceBancaire {
 			}
 		}
 
-		// Si on a trouvé des comptes ...
+		// Si on a trouvÃ© des comptes ...
 		if (alTemp.size() != 0) {
-			// ... on crée un tableau et on les recopie
+			// ... on crÃ©e un tableau et on les recopie
 			nbCTemp = alTemp.size();
 			t = new Compte[nbCTemp];
 			for (i = 0; i < nbCTemp; i++) {
@@ -175,10 +175,10 @@ public class AgenceBancaire {
 				}
 			}
 			
-			// Si on a trouvé des comptes ...
+			// Si on a trouvÃ© des comptes ...
 			if (nbC != 0)
 			{
-				// ...  on crée un tableau et on les recherche à nouveau
+				// ...  on crÃ©e un tableau et on les recherche Ã  nouveau
 				// pour les recopier
 				t = new Compte[nbC];
 				j=0;
@@ -205,7 +205,7 @@ public class AgenceBancaire {
 	 * Affiche le nom de l'AgenceBancaire, sa localisation, le nombre de Comptes,
 	 * chaque Compte avec son solde.<BR>
 	 * <BR>
-	 * <B>ATTENTION : Méthode spéciale pour les TP.</B><BR>
+	 * <B>ATTENTION : MÃ©thode spÃ©ciale pour les TP.</B><BR>
 	 * <BR>
 	 */
 
@@ -226,7 +226,7 @@ public class AgenceBancaire {
 	}
 
 	/**
-	 * Permet d'obtenir la représentation String d'une AgenceBancaire.<BR>
+	 * Permet d'obtenir la reprÃ©sentation String d'une AgenceBancaire.<BR>
 	 * <BR>
 	 * Donne le nom de l'AgenceBancaire, la localisation, le nombre de Comptes.<BR>
 	 * <BR>
@@ -235,38 +235,38 @@ public class AgenceBancaire {
 	public String toString() {
 		return "Nom Agence : " + this.nom + " (" + this.loc + ") : "+this.alCptes.size()+" cptes";
 	}
-	
+
 	/**
-	 * Permet d'ajouter un Compte à l'AgenceBancaire.<BR>
-	 * Le Compte pCompteAAjouter est ajouté à l'AgenceBancaire s'il n'existe pas déjà un Compte
-	 * ayant le même numéro de compte que pCompteAAjouter 
-	 * (identique en numéro de compte à pCompteAAjouter.getNumCompte()).<BR>
-	 * Si on appelle la méthode avec null en paramètre, la méthode lève une exception.<BR>
-	 * 
+	 * Permet d'ajouter un Compte Ã  l'AgenceBancaire.<BR>
+	 * Le Compte pCompteAAjouter est ajoutÃ© Ã  l'AgenceBancaire s'il n'existe pas dÃ©jÃ  un Compte
+	 * ayant le mÃªme numÃ©ro de compte que pCompteAAjouter
+	 * (identique en numÃ©ro de compte Ã  pCompteAAjouter.getNumCompte()).<BR>
+	 * Si on appelle la mÃ©thode avec null en paramÃ¨tre, la mÃ©thode lÃ¨ve une exception.<BR>
+	 *
 	 * @param pCompteAAjouter
-	 *            Le Compte à ajouter à l'AgenceBancaire.
-	 * @throws ABCompteNullException  lorsque pCompteAAjouter == null	
-	 * @throws ABCompteDejaExistantException  lorsque un compte de numéro pCompteAAjouter.getNumCompte() existe déjà dans l'AgenceBancaire.
+	 *            Le Compte Ã  ajouter Ã  l'AgenceBancaire.
+	 * @throws ABCompteNullException  lorsque pCompteAAjouter == null
+	 * @throws ABCompteDejaExistantException  lorsque un compte de numÃ©ro pCompteAAjouter.getNumCompte() existe dÃ©jÃ  dans l'AgenceBancaire.
 	 * @see AgenceBancaire#removeCompte(String)
 	 */
 
 	public void addCompte(Compte pCompteAAjouter) throws ABCompteNullException, ABCompteDejaExistantException {
 		Compte c;
 
-		// Si null => refusé
+		// Si null => refusÃ©
 		if (pCompteAAjouter == null) {
-			throw new ABCompteNullException("Erreur ajout Compte 'null' dans l'agence " 
+			throw new ABCompteNullException("Erreur ajout Compte 'null' dans l'agence "
 					+ this.nom + " (" + this.loc + ")");
 		}
 
-		// On cherche un Compte de même numéro
+		// On cherche un Compte de mÃªme numÃ©ro
 		c = this.trouveCompte(pCompteAAjouter.getNumCompte());
 
-		// Si trouvé
+		// Si trouvÃ©
 		if (c != null) {
-			// => refusé
+			// => refusÃ©
 			throw new ABCompteDejaExistantException(
-					"Erreur ajout Compte déja existant ("
+					"Erreur ajout Compte dÃ©ja existant ("
 					+ pCompteAAjouter.getNumCompte() + ") dans l'agence " 
 					+ this.nom + " (" + this.loc + ")");
 		} else {
@@ -277,23 +277,23 @@ public class AgenceBancaire {
 	}
 
 	/**
-	 * Permet de supprimer un Compte de l'AgenceBancaire, à partir de son numéro.<BR>
-	 * Le Compte (unique) de numéro pNumCompte est retiré de l'AgenceBancaire s'il est
-	 * trouvé.<BR>
-	 * Une exception est levée si le compte n'est pas trouvé.<BR>
-	 * 
+	 * Permet de supprimer un Compte de l'AgenceBancaire, Ã  partir de son numÃ©ro.<BR>
+	 * Le Compte (unique) de numÃ©ro pNumCompte est retirÃ© de l'AgenceBancaire s'il est
+	 * trouvÃ©.<BR>
+	 * Une exception est levÃ©e si le compte n'est pas trouvÃ©.<BR>
+	 *
 	 * @param pNumCompte
-	 *            Le numéro du Compte à supprimer de l'AgenceBancaire.
-	 * @throws ABCompteInexistantException	Lorsque aucun compte de numéro pNumCompte ne peut être trouvé.
+	 *            Le numÃ©ro du Compte Ã  supprimer de l'AgenceBancaire.
+	 * @throws ABCompteInexistantException	Lorsque aucun compte de numÃ©ro pNumCompte ne peut Ãªtre trouvÃ©.
 	 * @see AgenceBancaire#addCompte(Compte)
 	 */
 	public void removeCompte(String pNumCompte) throws ABCompteInexistantException{
 		Compte c;
 
-		// On cherche un Compte de même numéro
+		// On cherche un Compte de mÃªme numÃ©ro
 		c = this.trouveCompte(pNumCompte);
 
-		// Si pas trouvé ...
+		// Si pas trouvÃ© ...
 		if (c == null) {
 			// ... erreur
 			throw new ABCompteInexistantException(
@@ -301,19 +301,19 @@ public class AgenceBancaire {
 					+ pNumCompte+ ") dans l'agence " 
 					+ this.nom + " (" + this.loc + ")");
 		} else {
-			// ... on enlève ce Compte
+			// ... on enlÃ¨ve ce Compte
 			this.alCptes.remove(c);
 		}
 	}
 
 
 	/**
-	 * Méthode privée de recherche d'un compte.
-	 * Cherche un compte dans alCptes ayant pour numéro de compte pNC.
-	 * Renvoie null si aucun compte n'est trouvé.
+	 * MÃ©thode privÃ©e de recherche d'un compte.
+	 * Cherche un compte dans alCptes ayant pour numÃ©ro de compte pNC.
+	 * Renvoie null si aucun compte n'est trouvÃ©.
 	 *
-	 * @param      pNC  numéro dui compte recherché
-	 * @return     l'objet compte (la référence de) trouvé ou null si non trouvé. 
+	 * @param      pNC  numÃ©ro dui compte recherchÃ©
+	 * @return     l'objet compte (la rÃ©fÃ©rence de) trouvÃ© ou null si non trouvÃ©.
 	 */
 	private Compte trouveCompte(String pNC) {
 		Compte c, cTemp;
@@ -324,7 +324,7 @@ public class AgenceBancaire {
 		c = null;
 		for (i = 0; i < nbC && c == null; i++) {
 			cTemp = alCptes.get(i);
-			// Si un Compte a le même numéro que pNC
+			// Si un Compte a le mÃªme numÃ©ro que pNC
 			if (cTemp.getNumCompte().equals(pNC)) {
 				// ... on le garde
 				c = cTemp;

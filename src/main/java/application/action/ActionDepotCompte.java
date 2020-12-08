@@ -5,8 +5,7 @@ import banque.Compte;
 
 import java.util.Scanner;
 
-
-public class ActionVoirCompteNumero implements Action<AgenceBancaire>{
+public class ActionDepotCompte implements Action<AgenceBancaire>{
     private String message ;
     private String code ;
 
@@ -14,19 +13,19 @@ public class ActionVoirCompteNumero implements Action<AgenceBancaire>{
      * Constructeur
      * @param code
      */
-    public ActionVoirCompteNumero(String code) {
-        this.message = "Voir un compte par son numéro";
+    public ActionDepotCompte(String code) {
+        this.message = "Déposer de l'argent sur un compte";
         this.code = code;
     }
 
     @Override
     public String actionMessage() {
-        return message;
+        return this.message;
     }
 
     @Override
     public String actionCode() {
-        return code;
+        return this.code;
     }
 
     @Override
@@ -39,10 +38,14 @@ public class ActionVoirCompteNumero implements Action<AgenceBancaire>{
         Compte c = ag.getCompte(numCompte) ;
         if (c==null) {
             System.out.println("\nCompte inexistant ...\n");
+            return;
         } else {
             c.afficher();
         }
 
-        System.out.println("\n");
+        System.out.println("\nVeuillez saisir le montant du depot --> ");
+        int montant = (int) scanner.nextDouble();
+
+        ag.getCompte(numCompte).deposer(montant);
     }
 }

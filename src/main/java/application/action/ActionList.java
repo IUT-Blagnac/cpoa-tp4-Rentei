@@ -1,5 +1,4 @@
 package application.action;
-
 /**
  * An ActionList is an object that implements a end-user menu.<BR>
  * It is defined by a title (printed on top of the menu).<BR>
@@ -14,7 +13,7 @@ package application.action;
  *
  * @param <E> The type of object on which the list action may act on.
  */
-public interface ActionList<E> extends Action<E> {
+public interface ActionList<E> extends Action<E>{
     /**
      * Title of the list of actions (menu).
      *

@@ -1,30 +1,33 @@
 package application.action;
 
 import banque.AgenceBancaire;
+import banque.Compte;
 
-public class ActionListeDesComptes<E> implements Action<E>{
+public class ActionListeDesComptes implements Action<AgenceBancaire>{
+    private String message ;
+    private String code ;
 
-    private String message;
-    private String code;
-
-    public ActionListeDesComptes(String message) {
-        this.message = message;
-        this.code = "0";
+    /**
+     * Constructeur
+     * @param code
+     */
+    public ActionListeDesComptes(String code) {
+        this.message = "Liste des comptes de l'agence" ;
+        this.code = code;
     }
 
     @Override
     public String actionMessage() {
-        return message;
+        return this.message;
     }
 
     @Override
     public String actionCode() {
-        return code;
+        return this.code;
     }
 
     @Override
-    public void execute(E e) throws Exception {
-        ((AgenceBancaire) e).afficher();
+    public void execute(AgenceBancaire ag) throws Exception {
+        ag.afficher(); // Affiche tous les comptes d'une agence bancaire
     }
-
 }

@@ -6,7 +6,7 @@ import banque.Compte;
 import java.util.Scanner;
 
 
-public class ActionVoirCompteNumero implements Action<AgenceBancaire>{
+public class ActionVoirCompteProprio implements Action<AgenceBancaire>{
     private String message ;
     private String code ;
 
@@ -14,33 +14,35 @@ public class ActionVoirCompteNumero implements Action<AgenceBancaire>{
      * Constructeur
      * @param code
      */
-    public ActionVoirCompteNumero(String code) {
-        this.message = "Voir un compte par son numéro";
-        this.code = code;
+    public ActionVoirCompteProprio(String code) {
+        this.message = "Voir les comptes d'un Propriétaire";
+        this.code = code ;
     }
 
     @Override
     public String actionMessage() {
-        return message;
+        return this.message;
     }
 
     @Override
     public String actionCode() {
-        return code;
+        return this.code;
     }
 
     @Override
     public void execute(AgenceBancaire ag) throws Exception {
         // Saisie
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Veuillez saisir le numéro du compte --> ");
-        String numCompte = scanner.nextLine();
+        System.out.println("Veuillez saisir un nom de proprio --> ");
+        String proprioCompte = scanner.nextLine();
 
-        Compte c = ag.getCompte(numCompte) ;
-        if (c==null) {
+        Compte[] c = ag.getComptesDe(proprioCompte) ;
+        if (c==null || c.length == 0) {
             System.out.println("\nCompte inexistant ...\n");
         } else {
-            c.afficher();
+            for (Compte cpt : c){
+                cpt.afficher();
+            }
         }
 
         System.out.println("\n");
