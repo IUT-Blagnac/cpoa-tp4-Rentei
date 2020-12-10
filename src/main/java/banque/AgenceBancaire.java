@@ -1,10 +1,10 @@
 package banque;
 
+import java.util.ArrayList;
+
 import banque.exception.ABCompteDejaExistantException;
 import banque.exception.ABCompteInexistantException;
 import banque.exception.ABCompteNullException;
-
-import java.util.ArrayList;
 
 
 // V ARRAYLLIST OK
@@ -235,17 +235,17 @@ public class AgenceBancaire {
 	public String toString() {
 		return "Nom Agence : " + this.nom + " (" + this.loc + ") : "+this.alCptes.size()+" cptes";
 	}
-
+	
 	/**
 	 * Permet d'ajouter un Compte à l'AgenceBancaire.<BR>
 	 * Le Compte pCompteAAjouter est ajouté à l'AgenceBancaire s'il n'existe pas déjà un Compte
-	 * ayant le même numéro de compte que pCompteAAjouter
+	 * ayant le même numéro de compte que pCompteAAjouter 
 	 * (identique en numéro de compte à pCompteAAjouter.getNumCompte()).<BR>
 	 * Si on appelle la méthode avec null en paramètre, la méthode lève une exception.<BR>
-	 *
+	 * 
 	 * @param pCompteAAjouter
 	 *            Le Compte à ajouter à l'AgenceBancaire.
-	 * @throws ABCompteNullException  lorsque pCompteAAjouter == null
+	 * @throws ABCompteNullException  lorsque pCompteAAjouter == null	
 	 * @throws ABCompteDejaExistantException  lorsque un compte de numéro pCompteAAjouter.getNumCompte() existe déjà dans l'AgenceBancaire.
 	 * @see AgenceBancaire#removeCompte(String)
 	 */
@@ -255,7 +255,7 @@ public class AgenceBancaire {
 
 		// Si null => refusé
 		if (pCompteAAjouter == null) {
-			throw new ABCompteNullException("Erreur ajout Compte 'null' dans l'agence "
+			throw new ABCompteNullException("Erreur ajout Compte 'null' dans l'agence " 
 					+ this.nom + " (" + this.loc + ")");
 		}
 
@@ -281,7 +281,7 @@ public class AgenceBancaire {
 	 * Le Compte (unique) de numéro pNumCompte est retiré de l'AgenceBancaire s'il est
 	 * trouvé.<BR>
 	 * Une exception est levée si le compte n'est pas trouvé.<BR>
-	 *
+	 * 
 	 * @param pNumCompte
 	 *            Le numéro du Compte à supprimer de l'AgenceBancaire.
 	 * @throws ABCompteInexistantException	Lorsque aucun compte de numéro pNumCompte ne peut être trouvé.
@@ -313,7 +313,7 @@ public class AgenceBancaire {
 	 * Renvoie null si aucun compte n'est trouvé.
 	 *
 	 * @param      pNC  numéro dui compte recherché
-	 * @return     l'objet compte (la référence de) trouvé ou null si non trouvé.
+	 * @return     l'objet compte (la référence de) trouvé ou null si non trouvé. 
 	 */
 	private Compte trouveCompte(String pNC) {
 		Compte c, cTemp;

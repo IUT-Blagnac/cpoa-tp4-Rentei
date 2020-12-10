@@ -5,16 +5,17 @@ import banque.Compte;
 import banque.exception.ABCompteDejaExistantException;
 import banque.exception.ABCompteNullException;
 
+
 public class Main {
     public static void main(String[] args) {
         // Agence bancaire
         AgenceBancaire agenceBancaire = new AgenceBancaire("Banque Populaire","Blagnac");
         // Ajout des comptes
         try {
-            agenceBancaire.addCompte(new Compte("00101", "AMIDALA"));
-            agenceBancaire.addCompte(new Compte("00102","TANO"));
-            agenceBancaire.addCompte(new Compte("00103","KENOBI"));
-            agenceBancaire.addCompte(new Compte("00104","SKYWAlKER"));
+            agenceBancaire.addCompte(new Compte("00101", "Tchoupi"));
+            agenceBancaire.addCompte(new Compte("00202","OursBrun"));
+            agenceBancaire.addCompte(new Compte("00303","Pickachu"));
+            agenceBancaire.addCompte(new Compte("00404","Bernard"));
         } catch (ABCompteNullException | ABCompteDejaExistantException e) {
             e.printStackTrace();
         }
